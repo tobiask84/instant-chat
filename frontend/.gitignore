@@ -1,6 +1,6 @@
 _STORE
 node_modules
-build/
+dist
 .module-cache
 *.log*
 chrome-user-data
