@@ -1,5 +1,5 @@
 {
-  "name": "Instant-Chat",
+  "name": "instant-chat",
   "description": "Simple Chat app",
   "version": "1.0.0",
   "main": "src/index.tsx",
@@ -10,6 +10,7 @@
     "start": "webpack-dev-server --mode development --env.development --open --hot --progress",
     "build": "webpack --mode production --env.production --progress",
     "lint": "eslint './src/**/*.{ts,tsx}'",
+    "prettier": "prettier --write '**/*.{ts,js,css,html,tsx}'",
     "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix"
   },
   "devDependencies": {

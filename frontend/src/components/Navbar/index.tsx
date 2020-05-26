@@ -1,6 +1,8 @@
 import React from "react";
-import "./Navbar.scss";
+import classes from "./Navbar.module.scss";
 
-const Navbar = () => <h1>Instant Chat Navbar</h1>;
+const Navbar = () => {
+  return <h1 className={classes.root}>Instant Chat Navbar</h1>;
+};
 
 export default Navbar;

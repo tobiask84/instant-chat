@@ -10,14 +10,14 @@ interface Env {
 const webpackConfig = (env: Env): Configuration => ({
   entry: "./src/index.tsx",
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".tsx", ".js", "scss"],
     alias: {
-      components: path.resolve(__dirname, "./src/components/"),
-    },
+      components: path.resolve(__dirname, "./src/components/")
+    }
   },
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: "build.js",
+    filename: "build.js"
   },
   module: {
     rules: [
@@ -25,30 +25,41 @@ const webpackConfig = (env: Env): Configuration => ({
         test: /\.tsx?$/,
         loader: "ts-loader",
         options: {
-          transpileOnly: true,
+          transpileOnly: true
         },
-        exclude: /dist/,
+        exclude: /dist/
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
           "style-loader",
-          "css-loader",
-          "sass-loader",
-        ],
-      },
-    ],
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                mode: "local",
+                exportGlobals: true,
+                localIdentName: "[name]__[local]--[hash:base64:5]",
+                context: path.resolve(__dirname, "src"),
+                hashPrefix: "my-custom-hash"
+              }
+            }
+          },
+          "sass-loader"
+        ]
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: "./public/index.html"
     }),
     new webpack.DefinePlugin({
       "process.env.PRODUCTION": env.production || !env.development,
-      "process.env.VERSION": JSON.stringify(require("./package.json").version),
+      "process.env.VERSION": JSON.stringify(require("./package.json").version)
     }),
-    new ForkTsCheckerWebpackPlugin({ eslint: true }),
-  ],
+    new ForkTsCheckerWebpackPlugin({ eslint: true })
+  ]
 });
 
 export default webpackConfig;
