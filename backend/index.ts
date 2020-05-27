@@ -6,8 +6,10 @@ app.get('/', (req: any, res: any) => {
     res.send('<h1>Hello world</h1>');
 });
 
-io.on('connection', () => {
-    console.log('a user connected');
+io.on('connection', (socket: any) => {
+    socket.on('chat message', (msg: string) => {
+        io.emit('chat message', msg);
+    });
 });
 
 http.listen(3000, () => {
