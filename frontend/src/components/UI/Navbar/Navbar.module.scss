@@ -1,5 +1,5 @@
 .root {
-  background: var(--color-primary);
+  background: var(--color-primary-dark);
   display: flex;
   align-items: center;
   padding: 0 2rem;
@@ -10,7 +10,7 @@
   border: none;
   border-bottom: 4px solid transparent;
   outline: none;
-  font-size: 20px;
+  font-size: 1.25rem;
   color: var(--color-font-primary);
   cursor: pointer;
   height: 100%;
@@ -19,5 +19,5 @@
 }
 
 .active {
-  border-bottom-color: var(--color-secondary);
+  border-bottom-color: var(--color-accent);
 }

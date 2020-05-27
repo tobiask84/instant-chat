@@ -12,6 +12,7 @@ body {
   grid-template-rows: 4rem auto;
 }
 
-.body {
-  background: var(--color-main-bg);
+.content {
+  background: var(--color-secondary-light);
+  overflow-y: hidden;
 }

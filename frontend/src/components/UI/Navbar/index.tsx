@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import classes from './Navbar.module.scss';
-import { Tab, TabId } from '../../containers/Generic.types';
+import { Tab, TabId } from '../../../containers/Generic.types';
 
 type Props = {
   tabs: Tab[];

@@ -1,0 +1,59 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  margin-right: auto;
+  align-items: flex-start;
+}
+
+.myMessage {
+  margin-right: 0;
+  margin-left: auto;
+  align-items: flex-end;
+}
+
+.header {
+  color: var(--color-font-label);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0 1rem 0 2.5rem;
+
+  .myMessage & {
+    margin: 0 2.5rem 0 1rem;
+  }
+}
+
+.user {
+  margin-right: 8px;
+}
+
+.bubble {
+  background: var(--color-secondary);
+  padding: 1rem;
+  border-radius: 1rem;
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 0 0 20px;
+    border-color: transparent transparent transparent var(--color-secondary);
+  }
+
+  .myMessage & {
+    background: var(--color-primary);
+    color: var(--color-font-primary);
+
+    &:before {
+      left: unset;
+      right: 1rem;
+      border-width: 0 0 20px 20px;
+      border-color: transparent transparent var(--color-primary) transparent;
+    }
+  }
+}

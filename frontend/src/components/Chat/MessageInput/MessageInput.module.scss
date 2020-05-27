@@ -1,0 +1,26 @@
+.root {
+  width: 100%;
+  background: var(--color-primary-light);
+  padding: 1rem 2rem;
+  display: flex;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  height: 100%;
+  padding: 0 1rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+}
+
+.sendButton {
+  background: var(--color-accent);
+  color: var(--color-font-primary);
+  border-radius: 2rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  margin-left: 1rem;
+  min-width: 6rem;
+}
