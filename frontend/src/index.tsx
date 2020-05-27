@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../styles/theme.scss';
+import io from 'socket.io-client';
 
 import App from './App';
+
+io('http://localhost:3000');
 
 ReactDOM.render(<App />, document.getElementById('root'));
