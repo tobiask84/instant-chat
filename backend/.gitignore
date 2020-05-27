@@ -1,0 +1,14 @@
+_STORE
+*.js
+node_modules
+dist
+.module-cache
+*.log*
+chrome-user-data
+*.sublime-project
+*.sublime-workspace
+*.iml
+../.idea
+.vscode
+*.swp
+*.swo
