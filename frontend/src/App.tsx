@@ -4,6 +4,7 @@ import Navbar from 'components/Navbar';
 import Chat from './containers/Chat';
 import Settings from './containers/Settings';
 import { Tab, TabId } from './containers/Generic.types';
+import { StateProvider } from './store';
 
 const tabs: Tab[] = [
   { id: TabId.chat, label: 'Chat', component: <Chat /> },
@@ -16,10 +17,12 @@ const App = () => {
   const activeTab = tabs.find((tab) => tab.id === tabId);
 
   return (
-    <div className={classes.root}>
-      <Navbar onChange={setTabId} tabs={tabs} activeTabId={tabId} />
-      <div className={classes.body}>{activeTab.component}</div>
-    </div>
+    <StateProvider>
+      <div className={classes.root}>
+        <Navbar onChange={setTabId} tabs={tabs} activeTabId={tabId} />
+        <div className={classes.body}>{activeTab.component}</div>
+      </div>
+    </StateProvider>
   );
 };
 
