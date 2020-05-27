@@ -6,7 +6,26 @@
   --color-secondary-light: #eef3f3;
   --color-secondary-dark: #aaaaaa;
   --color-accent: #ff9d0c;
+  --color-accent-dark: #ec9108;
   --color-font-primary: #eeeeee;
   --color-font-secondary: #222222;
   --color-font-label: #444444;
+  --color-input: #f2f2f2;
+  --color-input-font: #222222;
 };
+
+[data-theme="dark"] {
+  --color-primary: #407688;
+  --color-primary-light: #627177;
+  --color-primary-dark: #163348;
+  --color-secondary: #757f81;
+  --color-secondary-light: #3f4f5a;
+  --color-secondary-dark: #aaaaaa;
+  --color-accent: #ff9d0c;
+  --color-accent-dark: #ec9108;
+  --color-font-primary: #eeeeee;
+  --color-font-secondary: #dedede;
+  --color-font-label: #cbcbcb;
+  --color-input: #788e96;
+  --color-input-font: #f2f2f2;
+}
