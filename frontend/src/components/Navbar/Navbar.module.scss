@@ -1,4 +1,23 @@
 .root {
-  background: black;
-  color: white;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  border-bottom: 4px solid transparent;
+  outline: none;
+  font-size: 20px;
+  color: var(--color-font-primary);
+  cursor: pointer;
+  height: 100%;
+  min-width: 6rem;
+  padding: 0 1rem;
+}
+
+.active {
+  border-bottom-color: var(--color-secondary);
 }
