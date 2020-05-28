@@ -17,20 +17,23 @@ const sendMessage = (text: string) => {
   socket.emit('chat message', text);
 };
 
-const StateProvider = ({ children }: any): any => {
-  const [state, dispatch] = useReducer((state: State, action: Action): any => {
-    switch (action.type) {
-      case 'send-message': {
-        sendMessage(action.text);
-        return state;
-      }
-      case 'receive-message': {
-        return { messages: [...state.messages, action.text] };
-      }
-      default:
-        throw new Error();
+const reducer = (state: State, action: Action): any => {
+  switch (action.type) {
+    case 'send-message': {
+      sendMessage(action.text);
+      return state;
     }
-  }, initialState);
+    case 'receive-message': {
+      console.log(action.text);
+      return { messages: [...state.messages, action.text] };
+    }
+    default:
+      throw new Error();
+  }
+}
+
+const StateProvider = ({ children }: any): any => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     socket.on('chat message', (message: string) => {
