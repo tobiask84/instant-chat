@@ -9,6 +9,7 @@ describe('Message', () => {
   beforeAll(() => {
     message = {
       id: 1,
+      userId: '1',
       timestamp: Date.now(),
       user: 'User',
       text: 'Test message',

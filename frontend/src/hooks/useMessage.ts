@@ -6,7 +6,7 @@ export default function useMessages(): Array<any> {
   const { dispatch } = globalState;
   return [
     globalState.state.messages,
-    (message: string): void =>
-      dispatch({ type: 'send-message', text: message }),
+    (userId: string, text: string): void =>
+      dispatch({ type: 'send-message', userId, text }),
   ];
 }

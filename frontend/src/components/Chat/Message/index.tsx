@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import classes from './Message.module.scss';
 import { MessageType } from '../../../containers/Chat/Chat.types';
+import {getMyUuid} from "../../../service/localStorageService";
 
 type Props = {
   message: MessageType;
@@ -9,7 +10,7 @@ type Props = {
 };
 
 const Message = ({ message, className }: Props) => {
-  const isMyMessage = message.id % 2 === 0;
+  const isMyMessage = message.userId === getMyUuid();
 
   const getTime = () => {
     const date = new Date(message.timestamp);
