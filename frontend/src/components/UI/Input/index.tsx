@@ -11,16 +11,17 @@ type Props = {
   className?: string;
 };
 
-const Input = ({
+const Input = React.forwardRef(({
   onChange,
   onKeyPress = () => {},
   name,
   value,
   type = 'text',
   className,
-}: Props) => {
+}: Props, ref: any) => {
   return (
     <input
+      ref={ref}
       name={name}
       type={type}
       onChange={onChange}
@@ -29,6 +30,6 @@ const Input = ({
       className={classnames(classes.root, className)}
     />
   );
-};
+});
 
 export default Input;

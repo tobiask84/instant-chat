@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEvent, useMemo, useState } from 'react';
+import React, {ChangeEvent, KeyboardEvent, useMemo, useRef, useState} from 'react';
 import classnames from 'classnames';
 import classes from './MessageInput.module.scss';
 import Input from 'components/UI/Input';
@@ -18,6 +18,8 @@ const MessageInput = ({ onSend, className }: Props) => {
   const [message, setMessage] = useState<string>('');
   const settings = useMemo<SettingsType>(getSettings, []);
 
+  const inputRef = React.createRef<HTMLInputElement>();
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
   };
@@ -29,6 +31,7 @@ const MessageInput = ({ onSend, className }: Props) => {
 
     onSend(message);
     setMessage('');
+    inputRef.current.focus()
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -44,6 +47,7 @@ const MessageInput = ({ onSend, className }: Props) => {
   return (
     <div className={classnames(classes.root, className)}>
       <Input
+        ref={inputRef}
         value={message}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
