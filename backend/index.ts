@@ -7,8 +7,9 @@ app.get('/', (req: any, res: any) => {
 });
 
 io.on('connection', (socket: any) => {
-    socket.on('chat message', (userId: string, text: string) => {
-        io.emit('chat message', userId, text);
+    socket.on('chat message', (message: { userId: string, userName: string, text: string }) => {
+        const timestamp = Date.now();
+        io.emit('chat message', { ...message, timestamp, id: `${message.userId}-${timestamp}` });
     });
 });
 

@@ -11,7 +11,7 @@ describe('Message', () => {
       id: 1,
       userId: '1',
       timestamp: Date.now(),
-      user: 'User',
+      userName: 'User',
       text: 'Test message',
     };
   });

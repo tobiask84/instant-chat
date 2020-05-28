@@ -1,12 +1,12 @@
-import React, { createContext, useEffect, useReducer } from 'react';
+import React, { createContext, ReactNode, useEffect, useReducer } from 'react';
 import io from 'socket.io-client';
+import { MessageType } from './containers/Chat/Chat.types';
 
 type Action = {
   type: 'send-message' | 'receive-message';
-  userId: string;
-  text: string;
+  message: MessageType;
 };
-type State = { messages: string[] };
+type State = { messages: MessageType[] };
 
 const initialState: State = {
   messages: [],
@@ -17,31 +17,30 @@ const store = createContext<{ state: State; dispatch: React.Dispatch<Action> }>(
 const { Provider } = store;
 
 const socket = io('http://localhost:3000');
-const sendMessage = (userId: string, text: string) => {
-  socket.emit('chat message', userId, text);
+const sendMessage = (message: MessageType) => {
+  socket.emit('chat message', message);
 };
 
 const reducer = (state: State, action: Action): any => {
   switch (action.type) {
     case 'send-message': {
-      sendMessage(action.userId, action.text);
+      sendMessage(action.message);
       return state;
     }
     case 'receive-message': {
-      const { userId, text } = action;
-      return { messages: [...state.messages, { userId, text }] };
+      return { messages: [...state.messages, action.message] };
     }
     default:
       throw new Error();
   }
 };
 
-const StateProvider = ({ children }: any): any => {
+const StateProvider = ({ children }: { children: ReactNode }): any => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    socket.on('chat message', (userId: string, text: string) => {
-      dispatch({ type: 'receive-message', userId, text });
+    socket.on('chat message', (message: MessageType) => {
+      dispatch({ type: 'receive-message', message });
     });
   }, []);
 
