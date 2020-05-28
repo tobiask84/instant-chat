@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from './Settings.module.scss';
-import ThemeSelector from 'components/Settings/ThemeSelector';
+import Form from 'components/Settings/Form';
 
 const Settings = () => {
   return (
     <div className={classes.root}>
-      <ThemeSelector />
+      <Form />
     </div>
   );
 };

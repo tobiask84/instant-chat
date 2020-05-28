@@ -1,0 +1,10 @@
+.root {
+  border: 2px solid var(--color-primary-light);
+  padding: 0 1rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  background: var(--color-input);
+  color: var(--color-input-font);
+  outline: none;
+  min-height: 3rem;
+}

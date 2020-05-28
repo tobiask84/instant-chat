@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+};
+
+.label {
+  color: var(--color-font-secondary);
+  margin: 0 0 1rem;
+}
+
+.group {
+  padding-bottom: 2rem;
+}
+
+.resetButton {
+  margin-top: auto;
+}

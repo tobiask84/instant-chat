@@ -13,8 +13,7 @@ const Message = ({ message, className }: Props) => {
 
   const getTime = () => {
     const date = new Date(message.timestamp);
-
-    return `${date.getHours()}:${date.getMinutes()}`;
+    return date.toLocaleString('en', { hour: 'numeric', minute: 'numeric' });
   };
 
   return (

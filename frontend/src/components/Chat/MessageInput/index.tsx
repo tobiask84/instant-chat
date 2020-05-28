@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
 import classnames from 'classnames';
 import classes from './MessageInput.module.scss';
+import Input from 'components/UI/Input';
+import Button from 'components/UI/Button';
 
 type Props = {
   className?: string;
@@ -15,15 +17,24 @@ const MessageInput = ({ className, onSend }: Props) => {
   };
 
   const handleSend = () => {
+    if (!message) {
+      return;
+    }
+
     onSend(message);
+    setMessage('');
   };
 
   return (
     <div className={classnames(classes.root, className)}>
-      <input type="text" onChange={handleChange} className={classes.input} />
-      <button type="submit" className={classes.sendButton} onClick={handleSend}>
+      <Input
+        value={message}
+        onChange={handleChange}
+        className={classes.input}
+      />
+      <Button color="accent" onClick={handleSend} disabled={!message}>
         Send
-      </button>
+      </Button>
     </div>
   );
 };
