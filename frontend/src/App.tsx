@@ -16,10 +16,10 @@ const App = () => {
   const activeTab = tabs.find((tab) => tab.id === tabId);
 
   return (
-      <div className={classes.root}>
-        <Navbar onChange={setActiveTabId} tabs={tabs} activeTabId={tabId} />
-        <div className={classes.content}>{activeTab.component}</div>
-      </div>
+    <div className={classes.root}>
+      <Navbar onChange={setActiveTabId} tabs={tabs} activeTabId={tabId} />
+      <div className={classes.content}>{activeTab.component}</div>
+    </div>
   );
 };
 

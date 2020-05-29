@@ -11,7 +11,10 @@ type Props = {
 
 const MessageList = ({ messages, className }: Props) => {
   return (
-    <div className={classnames(classes.root, className)}>
+    <div
+      data-testid="message-list"
+      className={classnames(classes.root, className)}
+    >
       {messages.map((message) => (
         <Message
           className={classes.message}

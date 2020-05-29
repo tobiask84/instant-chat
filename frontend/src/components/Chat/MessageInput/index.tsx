@@ -1,8 +1,8 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import classnames from 'classnames';
 import classes from './MessageInput.module.scss';
-import Input from 'components/UI/Input';
-import Button from 'components/UI/Button';
+import Input from '../../../components/UI/Input';
+import Button from '../../../components/UI/Button';
 import { SendOption } from '../../../containers/Settings/Settings.types';
 import useSettings from '../../../hooks/useSettings';
 
@@ -42,7 +42,10 @@ const MessageInput = ({ onSend, className }: Props) => {
   };
 
   return (
-    <div className={classnames(classes.root, className)}>
+    <div
+      data-testid="message-input"
+      className={classnames(classes.root, className)}
+    >
       <Input
         ref={inputRef}
         value={message}

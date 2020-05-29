@@ -23,7 +23,11 @@ export type TabChangeAction = {
   tab: TabId;
 };
 
-export type Action = MessageAction | SettingsAction | UserAction | TabChangeAction;
+export type Action =
+  | MessageAction
+  | SettingsAction
+  | UserAction
+  | TabChangeAction;
 
 export type State = {
   messages?: MessageType[];

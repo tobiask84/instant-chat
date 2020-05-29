@@ -1,5 +1,5 @@
-import * as https from "https";
-const fs = require('fs')
+import * as https from 'https';
+const fs = require('fs');
 const app = require('express')();
 const http = require('http');
 
@@ -7,11 +7,13 @@ const privateKeyPath = process.env.INSTANT_CHAT_PRIVATE_KEY;
 const fullChainPath = process.env.INSTANT_CHAT_FULL_CHAIN;
 
 const isTls = privateKeyPath && fullChainPath;
-const protocol = isTls ? https : http
-const server = protocol.createServer({
-        key: isTls ? fs.readFileSync(privateKeyPath) : undefined,
-        cert: isTls ? fs.readFileSync(fullChainPath): undefined
-    }, app).listen(3000);
+const protocol = isTls ? https : http;
+const server = protocol
+  .createServer({
+      key: isTls ? fs.readFileSync(privateKeyPath) : undefined,
+      cert: isTls ? fs.readFileSync(fullChainPath): undefined
+  }, app)
+  .listen(3000);
 
 const io = require('socket.io')(server);
 

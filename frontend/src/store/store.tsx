@@ -32,8 +32,8 @@ const reducer = (state: State, action: Action): State => {
       return state;
     }
     case 'receive-message': {
-      const isUnread = state.activeTab === TabId.settings
-      let unreadMessageCount = state.unreadMessageCount + (isUnread ? 1 : 0);
+      const isUnread = state.activeTab === TabId.settings;
+      const unreadMessageCount = state.unreadMessageCount + (isUnread ? 1 : 0);
       return {
         ...state,
         messages: [...state.messages, action.message],
