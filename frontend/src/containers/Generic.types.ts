@@ -10,3 +10,8 @@ export type Tab = {
   label: string;
   component?: ReactNode;
 };
+
+export type User = {
+  id?: string;
+  name?: string;
+};

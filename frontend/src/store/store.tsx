@@ -2,13 +2,19 @@ import React, { createContext, ReactNode, useEffect, useReducer } from 'react';
 import { MessageType } from '../containers/Chat/Chat.types';
 import { Action, State } from './store.types';
 import { defaultSettings } from '../containers/Settings/constants';
-import { getSettings, saveSettings } from '../service/localStorageService';
+import {
+  getSettings,
+  getUser,
+  saveSettings,
+  saveUser,
+} from '../service/localStorageService';
 import useTheme from '../hooks/useTheme';
 import { sendMessage, onReceiveMessage } from '../service/apiService';
 
 const initialState: State = {
   messages: [],
   settings: defaultSettings,
+  user: {},
 };
 
 const store = createContext<{ state: State; dispatch: React.Dispatch<Action> }>(
@@ -28,7 +34,12 @@ const reducer = (state: State, action: Action): State => {
     case 'set-settings': {
       const settings = { ...state.settings, ...action.settings };
       saveSettings(settings);
-      return { ...state, settings: { ...settings } };
+      return { ...state, settings };
+    }
+    case 'set-user': {
+      const user = { ...state.user, ...action.user };
+      saveUser(user);
+      return { ...state, user };
     }
     default:
       throw new Error();
@@ -41,7 +52,9 @@ const StateProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const settings = getSettings();
+    const user = getUser();
     dispatch({ type: 'set-settings', settings });
+    dispatch({ type: 'set-user', user });
     setThemeAttr(settings.theme);
 
     onReceiveMessage((message: MessageType) => {

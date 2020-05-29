@@ -14,6 +14,7 @@ import Input from 'components/UI/Input';
 import Button from 'components/UI/Button';
 import useTheme from '../../../hooks/useTheme';
 import useSettings from '../../../hooks/useSettings';
+import useUser from '../../../hooks/useUser';
 
 type Props = {
   className?: string;
@@ -22,14 +23,15 @@ type Props = {
 const Form = ({ className }: Props) => {
   const { setThemeAttr } = useTheme();
   const [settings, setSettings] = useSettings();
-  const [name, setName] = useState<string>(() => settings.name);
+  const [user, setUser] = useUser();
+  const [name, setName] = useState<string>(() => user.name);
 
   useEffect(() => {
     setThemeAttr(settings.theme);
   }, [settings.theme, setThemeAttr]);
 
   const onNameBlur = () => {
-    setSettings({ ...settings, name });
+    setUser({ name });
   };
 
   const onNameChange = (e: ChangeEvent<HTMLInputElement>) => {

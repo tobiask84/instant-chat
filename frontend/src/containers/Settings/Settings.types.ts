@@ -18,7 +18,7 @@ export enum ClockFormat {
 }
 
 export type SettingsType = {
-  id?: string;
+  userId?: string;
   name?: string;
   theme: Theme;
   sendOnCtrlEnter: SendOption;

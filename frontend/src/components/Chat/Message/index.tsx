@@ -1,12 +1,10 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import classes from './Message.module.scss';
 import { MessageType } from '../../../containers/Chat/Chat.types';
-import { getMyUuid, getSettings } from '../../../service/localStorageService';
-import {
-  ClockFormat,
-  SettingsType,
-} from '../../../containers/Settings/Settings.types';
+import { ClockFormat } from '../../../containers/Settings/Settings.types';
+import useSettings from '../../../hooks/useSettings';
+import useUser from '../../../hooks/useUser';
 
 type Props = {
   message: MessageType;
@@ -14,8 +12,9 @@ type Props = {
 };
 
 const Message = ({ message, className }: Props) => {
-  const isMyMessage = message.userId === getMyUuid();
-  const settings = useMemo<SettingsType>(getSettings, []);
+  const [settings] = useSettings();
+  const [user] = useUser();
+  const isMyMessage = message.userId === user.id;
 
   const getTime = () => {
     const date = new Date(message.timestamp);

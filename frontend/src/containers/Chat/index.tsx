@@ -1,17 +1,16 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import classes from './Chat.module.scss';
 import MessageInput from '../../components/Chat/MessageInput';
 import MessageList from 'components/Chat/MessageList';
 import useMessages from '../../hooks/useMessage';
-import { getMyUuid, getSettings } from '../../service/localStorageService';
-import { SettingsType } from '../Settings/Settings.types';
+import useUser from '../../hooks/useUser';
 
 const Chat = () => {
   const [messages, sendMessage] = useMessages();
-  const settings = useMemo<SettingsType>(getSettings, []);
+  const [user] = useUser();
 
   const sendHandler = (text: string) => {
-    sendMessage(getMyUuid(), settings.name, text);
+    sendMessage(user.id, user.name, text);
   };
 
   return (

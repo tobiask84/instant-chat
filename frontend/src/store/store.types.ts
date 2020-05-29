@@ -1,5 +1,6 @@
 import { MessageType } from '../containers/Chat/Chat.types';
 import { SettingsType } from '../containers/Settings/Settings.types';
+import { User } from '../containers/Generic.types';
 
 export type MessageAction = {
   type: 'send-message' | 'receive-message';
@@ -11,9 +12,15 @@ export type SettingsAction = {
   settings: SettingsType;
 };
 
-export type Action = MessageAction | SettingsAction;
+export type UserAction = {
+  type: 'set-user';
+  user: User;
+};
+
+export type Action = MessageAction | SettingsAction | UserAction;
 
 export type State = {
   messages?: MessageType[];
   settings?: SettingsType;
+  user?: User;
 };

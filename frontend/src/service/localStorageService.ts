@@ -1,25 +1,29 @@
 import { v4 as uuidv4 } from 'uuid';
 import { SettingsType } from '../containers/Settings/Settings.types';
 import { defaultSettings } from '../containers/Settings/constants';
+import { User } from '../containers/Generic.types';
 
-const MY_UUID_KEY = 'my-uuid';
+const USER_KEY = 'user';
 const SETTINGS_KEY = 'settings';
 
-export function getMyUuid(): string {
-  const loadedUuid = localStorage.getItem(MY_UUID_KEY);
-  if (loadedUuid == null) {
-    const generatedUuid = uuidv4();
-    localStorage.setItem(MY_UUID_KEY, generatedUuid);
-    return generatedUuid;
+export function getUser(): User {
+  const user = localStorage.getItem(USER_KEY);
+  if (!user) {
+    const newUser = { id: uuidv4(), name: 'User' };
+    localStorage.setItem(USER_KEY, JSON.stringify(newUser));
+    return newUser;
   }
-  return loadedUuid;
+
+  return JSON.parse(user);
+}
+
+export function saveUser(user: User): void {
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
 }
 
 export function getSettings(): SettingsType {
   const json = localStorage.getItem(SETTINGS_KEY);
-  return (json
-    ? JSON.parse(json)
-    : { ...defaultSettings, name: 'User' }) as SettingsType;
+  return json ? JSON.parse(json) : (defaultSettings as SettingsType);
 }
 
 export function saveSettings(settings: SettingsType): void {
