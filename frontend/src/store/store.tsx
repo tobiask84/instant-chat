@@ -1,10 +1,10 @@
 import React, { createContext, ReactNode, useEffect, useReducer } from 'react';
-import io from 'socket.io-client';
 import { MessageType } from '../containers/Chat/Chat.types';
 import { Action, State } from './store.types';
 import { defaultSettings } from '../containers/Settings/constants';
 import { getSettings, saveSettings } from '../service/localStorageService';
 import useTheme from '../hooks/useTheme';
+import { sendMessage, onReceiveMessage } from '../service/apiService';
 
 const initialState: State = {
   messages: [],
@@ -15,11 +15,6 @@ const store = createContext<{ state: State; dispatch: React.Dispatch<Action> }>(
   { state: initialState, dispatch: () => null },
 );
 const { Provider } = store;
-
-const socket = io('http://localhost:3000');
-const sendMessage = (message: MessageType) => {
-  socket.emit('chat message', message);
-};
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -49,7 +44,7 @@ const StateProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: 'set-settings', settings });
     setThemeAttr(settings.theme);
 
-    socket.on('chat message', (message: MessageType) => {
+    onReceiveMessage((message: MessageType) => {
       dispatch({ type: 'receive-message', message });
     });
   }, [setThemeAttr]);
