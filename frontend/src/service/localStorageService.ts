@@ -17,7 +17,9 @@ export function getMyUuid(): string {
 
 export function getSettings(): SettingsType {
   const json = localStorage.getItem(SETTINGS_KEY);
-  return (json ? JSON.parse(json) : defaultSettings) as SettingsType;
+  return (json
+    ? JSON.parse(json)
+    : { ...defaultSettings, name: 'User' }) as SettingsType;
 }
 
 export function saveSettings(settings: SettingsType): void {

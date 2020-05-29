@@ -7,7 +7,6 @@ import {
 } from './Settings.types';
 
 export const defaultSettings: SettingsType = {
-  name: 'User',
   theme: Theme.light,
   sendOnCtrlEnter: SendOption.off,
   clockFormat: ClockFormat.am,

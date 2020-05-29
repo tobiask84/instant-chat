@@ -19,7 +19,7 @@ export enum ClockFormat {
 
 export type SettingsType = {
   id?: string;
-  name: string;
+  name?: string;
   theme: Theme;
   sendOnCtrlEnter: SendOption;
   clockFormat: ClockFormat;

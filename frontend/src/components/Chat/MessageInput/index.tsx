@@ -1,13 +1,10 @@
-import React, {ChangeEvent, KeyboardEvent, useMemo, useRef, useState} from 'react';
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import classnames from 'classnames';
 import classes from './MessageInput.module.scss';
 import Input from 'components/UI/Input';
 import Button from 'components/UI/Button';
-import {
-  SendOption,
-  SettingsType,
-} from '../../../containers/Settings/Settings.types';
-import { getSettings } from '../../../service/localStorageService';
+import { SendOption } from '../../../containers/Settings/Settings.types';
+import useSettings from '../../../hooks/useSettings';
 
 type Props = {
   onSend: (message: string) => void;
@@ -16,7 +13,7 @@ type Props = {
 
 const MessageInput = ({ onSend, className }: Props) => {
   const [message, setMessage] = useState<string>('');
-  const settings = useMemo<SettingsType>(getSettings, []);
+  const [settings] = useSettings();
 
   const inputRef = React.createRef<HTMLInputElement>();
 
@@ -31,7 +28,7 @@ const MessageInput = ({ onSend, className }: Props) => {
 
     onSend(message);
     setMessage('');
-    inputRef.current.focus()
+    inputRef.current.focus();
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {

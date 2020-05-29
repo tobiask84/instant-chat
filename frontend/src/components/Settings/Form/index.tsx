@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import classes from './Form.module.scss';
-import { SettingsType } from '../../../containers/Settings/Settings.types';
 import {
   defaultSettings,
   sendOptions,
@@ -13,11 +12,8 @@ import RadioButtons from 'components/UI/RadioButtons';
 import Select from 'components/UI/Select';
 import Input from 'components/UI/Input';
 import Button from 'components/UI/Button';
-import {
-  getSettings,
-  saveSettings,
-} from '../../../service/localStorageService';
 import useTheme from '../../../hooks/useTheme';
+import useSettings from '../../../hooks/useSettings';
 
 type Props = {
   className?: string;
@@ -25,15 +21,20 @@ type Props = {
 
 const Form = ({ className }: Props) => {
   const { setThemeAttr } = useTheme();
-  const [settings, setSettings] = useState<SettingsType>(() => getSettings());
+  const [settings, setSettings] = useSettings();
+  const [name, setName] = useState<string>(() => settings.name);
 
   useEffect(() => {
     setThemeAttr(settings.theme);
-  }, [settings.theme]);
+  }, [settings.theme, setThemeAttr]);
 
-  useEffect(() => {
-    saveSettings(settings);
-  }, [settings]);
+  const onNameBlur = () => {
+    setSettings({ ...settings, name });
+  };
+
+  const onNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setSettings({ ...settings, [e.target.name]: e.target.value });
@@ -47,7 +48,12 @@ const Form = ({ className }: Props) => {
     <div className={classnames(classes.root, className)}>
       <div className={classes.group}>
         <h3 className={classes.label}>Name</h3>
-        <Input name="name" value={settings.name} onChange={onChange} />
+        <Input
+          name="name"
+          value={name}
+          onChange={onNameChange}
+          onBlur={onNameBlur}
+        />
       </div>
       <div className={classes.group}>
         <h3 className={classes.label}>Interface color</h3>
