@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from '@jest/globals';
 import { render } from '@testing-library/react';
 import { MessageType } from '../../../../containers/Chat/Chat.types';
-import Message from '../index';
+import { Message } from '../index';
 import * as useUser from '../../../../hooks/useUser';
 import * as useSettings from '../../../../hooks/useSettings';
 import { defaultSettings } from '../../../../containers/Settings/constants';

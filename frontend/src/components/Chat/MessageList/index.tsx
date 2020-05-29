@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import classes from './MessageList.module.scss';
 import { MessageType } from '../../../containers/Chat/Chat.types';
-import Message from '../Message';
+import { Message } from '../Message';
 
 type Props = {
   messages: MessageType[];

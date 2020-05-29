@@ -1,21 +1,18 @@
-import React, { createContext, ReactNode, useEffect, useReducer } from 'react';
-import { MessageType } from '../containers/Chat/Chat.types';
+import React, { createContext, ReactNode, useReducer } from 'react';
 import { Action, State } from './store.types';
-import { defaultSettings } from '../containers/Settings/constants';
 import {
   getSettings,
   getUser,
   saveSettings,
   saveUser,
 } from '../service/localStorageService';
-import useTheme from '../hooks/useTheme';
-import { onReceiveMessage, sendMessage } from '../service/apiService';
+import { sendMessage } from '../service/apiService';
 import { TabId } from '../containers/Generic.types';
 
 const initialState: State = {
   messages: [],
-  settings: defaultSettings,
-  user: {},
+  settings: getSettings(),
+  user: getUser(),
   activeTab: TabId.chat,
   unreadMessageCount: 0,
 };
@@ -64,21 +61,7 @@ const reducer = (state: State, action: Action): State => {
 };
 
 const StateProvider = ({ children }: { children: ReactNode }) => {
-  const { setThemeAttr } = useTheme();
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  useEffect(() => {
-    const settings = getSettings();
-    const user = getUser();
-    dispatch({ type: 'set-settings', settings });
-    dispatch({ type: 'set-user', user });
-    setThemeAttr(settings.theme);
-
-    onReceiveMessage((message: MessageType) => {
-      dispatch({ type: 'receive-message', message });
-    });
-  }, [setThemeAttr]);
-
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
 

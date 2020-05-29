@@ -44,4 +44,4 @@ const Message = ({ message, className }: Props) => {
   );
 };
 
-export default Message;
+export { Message };
