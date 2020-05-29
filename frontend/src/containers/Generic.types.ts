@@ -8,6 +8,7 @@ export enum TabId {
 export type Tab = {
   id: TabId;
   label: string;
+  badge?: string;
   component?: ReactNode;
 };
 

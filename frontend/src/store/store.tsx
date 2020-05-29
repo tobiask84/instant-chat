@@ -9,12 +9,15 @@ import {
   saveUser,
 } from '../service/localStorageService';
 import useTheme from '../hooks/useTheme';
-import { sendMessage, onReceiveMessage } from '../service/apiService';
+import { onReceiveMessage, sendMessage } from '../service/apiService';
+import { TabId } from '../containers/Generic.types';
 
 const initialState: State = {
   messages: [],
   settings: defaultSettings,
   user: {},
+  activeTab: TabId.chat,
+  unreadMessageCount: 0,
 };
 
 const store = createContext<{ state: State; dispatch: React.Dispatch<Action> }>(
@@ -29,7 +32,13 @@ const reducer = (state: State, action: Action): State => {
       return state;
     }
     case 'receive-message': {
-      return { ...state, messages: [...state.messages, action.message] };
+      const isUnread = state.activeTab === TabId.settings
+      let unreadMessageCount = state.unreadMessageCount + (isUnread ? 1 : 0);
+      return {
+        ...state,
+        messages: [...state.messages, action.message],
+        unreadMessageCount,
+      };
     }
     case 'set-settings': {
       const settings = { ...state.settings, ...action.settings };
@@ -40,6 +49,14 @@ const reducer = (state: State, action: Action): State => {
       const user = { ...state.user, ...action.user };
       saveUser(user);
       return { ...state, user };
+    }
+    case 'set-tab': {
+      const { tab } = action;
+      return {
+        ...state,
+        activeTab: action.tab,
+        unreadMessageCount: tab === TabId.chat ? 0 : state.unreadMessageCount,
+      };
     }
     default:
       throw new Error();

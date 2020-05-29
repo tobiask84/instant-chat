@@ -16,8 +16,24 @@
   height: 100%;
   min-width: 6rem;
   padding: 0 1rem;
+  position: relative; // for the absolute badge
 }
 
 .active {
   border-bottom-color: var(--color-accent);
+}
+
+.badge {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.1rem;
+  background: #577b88;
+  border-radius: 2rem;
+  border: 1px solid white;
+  width: 1.3rem;
+  height: 1.3rem;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
