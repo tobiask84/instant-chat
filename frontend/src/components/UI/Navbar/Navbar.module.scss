@@ -23,6 +23,16 @@
   border-bottom-color: var(--color-accent);
 }
 
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
 .badge {
   position: absolute;
   top: 0.3rem;

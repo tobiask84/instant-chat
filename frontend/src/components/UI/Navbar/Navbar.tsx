@@ -18,6 +18,7 @@ const Navbar = ({ tabs, activeTabId, onChange }: Props) => {
           type="button"
           className={classnames(classes.tab, {
             [classes.active]: activeTabId === tab.id,
+            [classes.blink]: tab.badge,
           })}
           onClick={() => onChange(tab.id)}
         >
