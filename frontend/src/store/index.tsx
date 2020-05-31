@@ -6,7 +6,8 @@ import {
   TabChangeAction,
   Action,
   State,
-} from './store.types';
+  actions,
+} from './reducer.types';
 
 export {
   store,
@@ -17,4 +18,5 @@ export {
   TabChangeAction,
   Action,
   State,
+  actions,
 };

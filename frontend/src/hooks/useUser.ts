@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { store } from '../store/store';
 import { User } from '../pages/Generic.types';
+import { actions } from '../store';
 
 export default function useUser(): [User, (user: User) => void] {
   const globalState = useContext(store);
@@ -9,7 +10,7 @@ export default function useUser(): [User, (user: User) => void] {
   return [
     globalState.state.user,
     (user: User): void => {
-      dispatch({ type: 'set-user', user });
+      dispatch(actions.setUser(user));
     },
   ];
 }

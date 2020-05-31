@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Chat.module.scss';
 import MessageInput from '../../components/Chat/MessageInput';
-import MessageList from 'components/Chat/MessageList';
+import MessageList from '../../components/Chat/MessageList';
 import useMessages from '../../hooks/useMessage';
 import useUser from '../../hooks/useUser';
 

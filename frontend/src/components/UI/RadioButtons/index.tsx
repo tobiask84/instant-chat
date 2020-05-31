@@ -1,3 +1,3 @@
-import RadioButtons from 'components/UI/RadioButtons/RadioButtons';
+import RadioButtons from './RadioButtons';
 
 export default RadioButtons;

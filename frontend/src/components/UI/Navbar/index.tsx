@@ -1,3 +1,3 @@
-import { NavbarContainer, tabs } from 'components/UI/Navbar/NavbarContainer';
+import { NavbarContainer, tabs } from './NavbarContainer';
 
 export { NavbarContainer, tabs };

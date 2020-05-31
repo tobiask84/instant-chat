@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Settings.module.scss';
-import Form from 'components/Settings/Form';
+import Form from '../../components/Settings/Form';
 
 const Settings = () => {
   return (

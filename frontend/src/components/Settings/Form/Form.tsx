@@ -8,10 +8,10 @@ import {
   clockFormatOptions,
   languageOptions,
 } from '../../../pages/Settings/constants';
-import RadioButtons from 'components/UI/RadioButtons';
-import Select from 'components/UI/Select';
-import Input from 'components/UI/Input';
-import Button from 'components/UI/Button';
+import RadioButtons from '../../UI/RadioButtons';
+import Select from '../../UI/Select';
+import Input from '../../UI/Input';
+import Button from '../../UI/Button';
 import useTheme from '../../../hooks/useTheme';
 import useSettings from '../../../hooks/useSettings';
 import useUser from '../../../hooks/useUser';

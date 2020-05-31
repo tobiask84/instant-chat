@@ -7,6 +7,7 @@ import { MessageType } from './pages/Chat';
 import { store } from './store/store';
 import useActiveTab from './hooks/useActiveTab';
 import { NavbarContainer, tabs } from 'components/UI/Navbar';
+import { actions } from './store';
 
 const App = () => {
   const { setThemeAttr } = useTheme();
@@ -17,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     onReceiveMessage((message: MessageType) => {
-      dispatch({ type: 'receive-message', message });
+      dispatch(actions.receiveMessage(message));
     });
   }, [dispatch]);
 

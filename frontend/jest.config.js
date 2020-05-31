@@ -5,4 +5,5 @@ module.exports = {
   transform: {
     '^.+\\.(t|j)sx?$': 'ts-jest',
   },
+  modulePathIgnorePatterns: ['index.tsx', '/__fixtures__/'],
 };

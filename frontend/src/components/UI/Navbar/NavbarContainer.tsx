@@ -1,10 +1,10 @@
 import React from 'react';
 import { Tab, TabId } from '../../../pages/Generic.types';
 import useUnreadMessageCount from '../../../hooks/useUnreadMessageCount';
-import { badgeCountToString } from 'components/UI/Navbar/UnreadMessages';
+import { badgeCountToString } from './UnreadMessages';
 import { Chat } from '../../../pages/Chat';
 import Settings from '../../../pages/Settings';
-import Navbar from 'components/UI/Navbar/Navbar';
+import Navbar from './Navbar';
 import useActiveTab from '../../../hooks/useActiveTab';
 
 export const tabs: Tab[] = [

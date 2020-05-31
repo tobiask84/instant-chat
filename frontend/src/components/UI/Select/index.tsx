@@ -1,3 +1,3 @@
-import Select from 'components/UI/Select/Select';
+import Select from './Select';
 
 export default Select;

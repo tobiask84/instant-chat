@@ -1,3 +1,3 @@
-import Form from 'components/Settings/Form/Form';
+import Form from './Form';
 
 export default Form;

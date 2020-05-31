@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { store } from '../store/store';
 import { SettingsType } from '../pages/Settings/Settings.types';
+import { actions } from '../store';
 
 export default function useSettings(): [
   SettingsType,
@@ -12,7 +13,7 @@ export default function useSettings(): [
   return [
     globalState.state.settings,
     (settings: SettingsType): void => {
-      dispatch({ type: 'set-settings', settings });
+      dispatch(actions.setSettings(settings));
     },
   ];
 }
