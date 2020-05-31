@@ -1,3 +1,3 @@
-import MessageList from 'components/Chat/MessageList/MessageList';
+import MessageList from './MessageList';
 
 export default MessageList;

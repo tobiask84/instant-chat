@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from '@jest/globals';
 import { render, fireEvent, screen } from '@testing-library/react';
-import MessageInput from '../index';
+import MessageInput from '..';
 
 describe('MessageInput', () => {
   const onSendMock = jest.fn();

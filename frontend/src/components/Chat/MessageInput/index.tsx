@@ -1,3 +1,3 @@
-import MessageInput from 'components/Chat/MessageInput/MessageInput';
+import MessageInput from './MessageInput';
 
 export default MessageInput;

@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 import { MessageType } from '../../../../pages/Chat';
-import MessageList from '../index';
+import MessageList from '..';
 
 describe('MessageList', () => {
   let messages: MessageType[];
