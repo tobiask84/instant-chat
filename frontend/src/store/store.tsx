@@ -6,7 +6,6 @@ import {
   saveSettings,
   saveUser,
 } from '../service/localStorageService';
-import { sendMessage } from '../service/apiService';
 import { TabId } from '../pages/Generic.types';
 
 const initialState: State = {
@@ -24,10 +23,6 @@ const { Provider } = store;
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'send-message': {
-      sendMessage(action.message);
-      return state;
-    }
     case 'receive-message': {
       const isUnread = state.activeTab === TabId.settings;
       const unreadMessageCount = state.unreadMessageCount + (isUnread ? 1 : 0);

@@ -4,7 +4,7 @@ import { TabId } from '../pages/Generic.types';
 import { User } from '../pages/Generic.types';
 
 export type MessageAction = {
-  type: 'send-message' | 'receive-message';
+  type: 'receive-message';
   message: MessageType;
 };
 
