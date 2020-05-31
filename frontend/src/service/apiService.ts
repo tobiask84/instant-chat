@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import { MessageType } from '../containers/Chat/Chat.types';
+import { MessageType } from '../pages/Chat';
 
 const envUrl = process.env.INSTANT_CHAT_BACKEND_URL;
 const hasEnvUrl = !!envUrl;

@@ -7,7 +7,7 @@ import {
   saveUser,
 } from '../service/localStorageService';
 import { sendMessage } from '../service/apiService';
-import { TabId } from '../containers/Generic.types';
+import { TabId } from '../pages/Generic.types';
 
 const initialState: State = {
   messages: [],

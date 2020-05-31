@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
-import { SettingsType } from '../containers/Settings/Settings.types';
-import { defaultSettings } from '../containers/Settings/constants';
-import { User } from '../containers/Generic.types';
+import { SettingsType } from '../pages/Settings/Settings.types';
+import { defaultSettings } from '../pages/Settings/constants';
+import { User } from '../pages/Generic.types';
 
 const USER_KEY = 'user';
 const SETTINGS_KEY = 'settings';

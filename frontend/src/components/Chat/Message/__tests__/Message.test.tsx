@@ -1,12 +1,12 @@
 import React from 'react';
 import { expect } from '@jest/globals';
 import { render } from '@testing-library/react';
-import { MessageType } from '../../../../containers/Chat/Chat.types';
+import { MessageType } from '../../../../pages/Chat';
 import { Message } from '../index';
 import * as useUser from '../../../../hooks/useUser';
 import * as useSettings from '../../../../hooks/useSettings';
-import { defaultSettings } from '../../../../containers/Settings/constants';
-import { ClockFormat } from '../../../../containers/Settings/Settings.types';
+import { defaultSettings } from '../../../../pages/Settings/constants';
+import { ClockFormat } from '../../../../pages/Settings/Settings.types';
 
 describe('Message', () => {
   let message: MessageType;

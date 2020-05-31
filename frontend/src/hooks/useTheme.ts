@@ -1,4 +1,4 @@
-import { Theme } from '../containers/Settings/Settings.types';
+import { Theme } from '../pages/Settings/Settings.types';
 import { useCallback } from 'react';
 
 export default function useTheme(): {

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { store } from '../store/store';
-import { SettingsType } from '../containers/Settings/Settings.types';
+import { SettingsType } from '../pages/Settings/Settings.types';
 
 export default function useSettings(): [
   SettingsType,

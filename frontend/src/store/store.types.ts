@@ -1,7 +1,7 @@
-import { MessageType } from '../containers/Chat/Chat.types';
-import { SettingsType } from '../containers/Settings/Settings.types';
-import { TabId } from '../containers/Generic.types';
-import { User } from '../containers/Generic.types';
+import { MessageType } from '../pages/Chat';
+import { SettingsType } from '../pages/Settings/Settings.types';
+import { TabId } from '../pages/Generic.types';
+import { User } from '../pages/Generic.types';
 
 export type MessageAction = {
   type: 'send-message' | 'receive-message';

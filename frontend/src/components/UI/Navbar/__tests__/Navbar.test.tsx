@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from '@jest/globals';
 import { render } from '@testing-library/react';
 import NavBar from '../index';
-import { Tab, TabId } from '../../../../containers/Generic.types';
+import { Tab, TabId } from '../../../../pages/Generic.types';
 import { fireEvent } from '@testing-library/dom';
 
 describe('NavBar', () => {

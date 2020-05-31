@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
-import { MessageType } from '../../../../containers/Chat/Chat.types';
+import { MessageType } from '../../../../pages/Chat';
 import MessageList from '../index';
 
 describe('MessageList', () => {

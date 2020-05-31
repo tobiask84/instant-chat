@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { store } from '../store/store';
-import { MessageType } from '../containers/Chat/Chat.types';
+import { MessageType } from '../pages/Chat';
 
 export default function useMessages(): [
   MessageType[],
