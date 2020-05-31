@@ -9,6 +9,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --env.development --open --hot --progress",
     "build": "webpack --mode production --env.production --progress",
+    "build:klockConsulting": "webpack --mode production --env.production --progress --env.backendUrl=klockconsulting.net",
     "test": "jest",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "prettier": "prettier --write '**/*.{ts,js,css,html,tsx}'",

@@ -6,6 +6,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 interface Env {
   development: boolean;
   production: boolean;
+  backendUrl: string;
 }
 const webpackConfig = (env: Env): Configuration => ({
   entry: './src/index.tsx',
@@ -56,7 +57,7 @@ const webpackConfig = (env: Env): Configuration => ({
     }),
     new webpack.DefinePlugin({
       'process.env.PRODUCTION': env.production || !env.development,
-      'process.env.VERSION': JSON.stringify(require('./package.json').version),
+      'process.env.INSTANT_CHAT_BACKEND_URL': JSON.stringify(env.backendUrl),
     }),
     new ForkTsCheckerWebpackPlugin({ eslint: true }),
   ],
