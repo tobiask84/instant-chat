@@ -39,14 +39,20 @@ const App = () => {
     const iphoneFix = () => {
       window.scrollTo(0, 0);
       document.body.scrollTop = 0;
-      appDivRef.current.style.height = `${window.visualViewport.height}px`;
+      if (window.visualViewport) {
+        appDivRef.current.style.height = `${window.visualViewport.height}px`;
+      }
     };
-    window.visualViewport.addEventListener('scroll', iphoneFix);
-    window.visualViewport.addEventListener('resize', iphoneFix);
-    iphoneFix();
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('scroll', iphoneFix);
+      window.visualViewport.addEventListener('resize', iphoneFix);
+      iphoneFix();
+    }
     return () => {
-      window.visualViewport.removeEventListener('scroll', iphoneFix);
-      window.visualViewport.removeEventListener('resize', iphoneFix);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('scroll', iphoneFix);
+        window.visualViewport.removeEventListener('resize', iphoneFix);
+      }
     };
   }, []);
 

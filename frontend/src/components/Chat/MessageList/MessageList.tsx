@@ -31,12 +31,16 @@ const MessageList = ({ messages, className }: Props) => {
   useEffect(() => {
     // if for example the keyboard opens or the window gets smaller
     // then the message list height changes and we want to scroll back down
-    window.visualViewport.removeEventListener('resize', scrollToBottom);
-    window.visualViewport.addEventListener('resize', () =>
-      window.setTimeout(() => scrollToBottom(true), 100),
-    );
-    return () => {
+    if (window.visualViewport) {
       window.visualViewport.removeEventListener('resize', scrollToBottom);
+      window.visualViewport.addEventListener('resize', () =>
+        window.setTimeout(() => scrollToBottom(true), 100),
+      );
+    }
+    return () => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', scrollToBottom);
+      }
     };
   }, [scrollToBottom]);
 
