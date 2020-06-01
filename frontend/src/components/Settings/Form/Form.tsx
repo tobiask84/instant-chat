@@ -6,10 +6,8 @@ import {
   sendOptions,
   themesOptions,
   clockFormatOptions,
-  languageOptions,
 } from '../../../pages/Settings/constants';
 import RadioButtons from '../../UI/RadioButtons';
-import Select from '../../UI/Select';
 import Input from '../../UI/Input';
 import Button from '../../UI/Button';
 import useTheme from '../../../hooks/useTheme';
@@ -84,6 +82,8 @@ const Form = ({ className }: Props) => {
           value={settings.sendOnCtrlEnter}
         />
       </div>
+      {/*
+      todo: finish implementation
       <div className={classes.group}>
         <h3 className={classes.label}>Language</h3>
         <Select
@@ -93,6 +93,7 @@ const Form = ({ className }: Props) => {
           value={settings.language}
         />
       </div>
+       */}
       <Button onClick={reset} className={classes.resetButton}>
         Reset to defaults
       </Button>
