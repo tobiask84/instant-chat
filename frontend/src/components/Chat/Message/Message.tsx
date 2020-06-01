@@ -6,6 +6,7 @@ import { MessageType } from '../../../pages/Chat';
 import { ClockFormat } from '../../../pages/Settings/Settings.types';
 import useSettings from '../../../hooks/useSettings';
 import useUser from '../../../hooks/useUser';
+import { getAllYoutubeIds } from './parser';
 
 type Props = {
   message: MessageType;
@@ -26,6 +27,8 @@ const Message = ({ message, className }: Props) => {
     });
   };
 
+  const youtubeIds = getAllYoutubeIds(message.text);
+
   return (
     <div
       className={classnames(
@@ -42,6 +45,21 @@ const Message = ({ message, className }: Props) => {
       </div>
       <div className={classes.bubble}>
         <Linkify>{message.text}</Linkify>
+        {youtubeIds &&
+          youtubeIds.map((id: string) => (
+            <div className={classes.videoWrapper} key={id}>
+              <div className={classes.video}>
+                <iframe
+                  width="560"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${id}`}
+                  frameBorder="0"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );
