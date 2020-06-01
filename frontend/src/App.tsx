@@ -1,14 +1,21 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useRef } from 'react';
 import classes from './App.module.scss';
 import useSettings from './hooks/useSettings';
 import useTheme from './hooks/useTheme';
 import { onReceiveMessage } from './service/apiService';
 import { MessageType } from './pages/Chat';
-import { store, actions } from './store';
+import { actions, store } from './store';
 import useActiveTab from './hooks/useActiveTab';
 import { NavbarContainer, tabs } from 'components/UI/Navbar';
 
+declare global {
+  interface Window {
+    visualViewport: any;
+  }
+}
+
 const App = () => {
+  const appDivRef = useRef<HTMLDivElement>();
   const { setThemeAttr } = useTheme();
   const [settings] = useSettings();
   const [tabId] = useActiveTab();
@@ -26,8 +33,25 @@ const App = () => {
 
   const activeTab = tabs.find((tab) => tab.id === tabId);
 
+  useLayoutEffect(() => {
+    // when the virtual keyboard opens the iphone scrolls the app
+    // and it computes wrong viewport numbers -> fix
+    const iphoneFix = () => {
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      appDivRef.current.style.height = `${window.visualViewport.height}px`;
+    };
+    window.visualViewport.addEventListener('scroll', iphoneFix);
+    window.visualViewport.addEventListener('resize', iphoneFix);
+    iphoneFix();
+    return () => {
+      window.visualViewport.removeEventListener('scroll', iphoneFix);
+      window.visualViewport.removeEventListener('resize', iphoneFix);
+    };
+  }, []);
+
   return (
-    <div className={classes.root}>
+    <div ref={(r) => (appDivRef.current = r)} className={classes.root}>
       <NavbarContainer />
       <div className={classes.content}>{activeTab.component}</div>
     </div>
