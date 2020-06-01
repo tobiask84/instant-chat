@@ -15,7 +15,9 @@ The app is consists of a frontend, and a backend which both are in the same repo
  
 The backend runs with express, typescript and socket.io. It does not have a database. 
 
-The frontend uses react and socket.io. The app keeps state through the react context api and persists settings and a userId (UUID) in the local storage.
+The frontend uses react and socket.io. 
+The app keeps state through the react context api 
+and persists settings and a userId (UUID) in the local storage.
 
 The app uses 
 * Yarn
@@ -92,7 +94,7 @@ and check the ones you were able to accomplish;
 ### Chat Page optional
 - [ ] Smiles support;
 - [X] Unread messages count in the chat tab;
-- [X] Link parser
+- [X] Link parser (parses links and youtube links, not pictures)
 - [X]  own ideas (scroll on message send/receive, refocus input on enter)
  
 ### Settings Page optional
@@ -101,4 +103,6 @@ and check the ones you were able to accomplish;
 
 # Some comments
 - It was required to make the notification tab blink when there are unread messages. This might be a bit over the top and could annoy the user.
-- I assume when it is required to make "the tab" blink, we are talking about the navbar and not about the browser tab
+- I assume "making the tab blink", means the tab in the navbar and not the browser tab
+- The `socket.io-client` lib is mocked during Jest Unit tests 
+  through the `__mocks__` dir in `frontend`.
