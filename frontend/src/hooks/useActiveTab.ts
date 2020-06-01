@@ -1,7 +1,6 @@
 import { useContext } from 'react';
-import { store } from '../store/store';
+import { store, actions } from '../store';
 import { TabId } from '../pages/Generic.types';
-import { actions } from '../store';
 
 export default function useActiveTab(): [TabId, (tab: TabId) => void] {
   const globalState = useContext(store);

@@ -1,7 +1,6 @@
 import { useContext } from 'react';
-import { store } from '../store/store';
+import { store, actions } from '../store';
 import { User } from '../pages/Generic.types';
-import { actions } from '../store';
 
 export default function useUser(): [User, (user: User) => void] {
   const globalState = useContext(store);
