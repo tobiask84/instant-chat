@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import classes from './Message.module.scss';
+import Linkify from 'react-linkify';
 import { MessageType } from '../../../pages/Chat';
 import { ClockFormat } from '../../../pages/Settings/Settings.types';
 import useSettings from '../../../hooks/useSettings';
@@ -39,7 +40,9 @@ const Message = ({ message, className }: Props) => {
         )}
         <span className={classes.date}>{getTime()}</span>
       </div>
-      <div className={classes.bubble}>{message.text}</div>
+      <div className={classes.bubble}>
+        <Linkify>{message.text}</Linkify>
+      </div>
     </div>
   );
 };

@@ -92,7 +92,7 @@ and check the ones you were able to accomplish;
 ### Chat Page optional
 - [ ] Smiles support;
 - [X] Unread messages count in the chat tab;
-- [ ] Link parser
+- [X] Link parser
 - [X]  own ideas (scroll on message send/receive, refocus input on enter)
  
 ### Settings Page optional
@@ -100,4 +100,5 @@ and check the ones you were able to accomplish;
 - [X] Add support to unread chat notifications;
 
 # Some comments
-It was required to make the notification tab blink when there are unread messages. This might be a bit over the top and could annoy the user.
+- It was required to make the notification tab blink when there are unread messages. This might be a bit over the top and could annoy the user.
+- I assume when it is required to make "the tab" blink, we are talking about the navbar and not about the browser tab
